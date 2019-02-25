@@ -28,7 +28,6 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml
   - # nightly and 7.4snapshot do not currently have ext-xdebug, which is needed for coverage testing
   - if [ $(phpenv version-name) >  7.3 ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
   - if [ $(phpenv version-name) <= 7.3 ]; then vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml; fi
