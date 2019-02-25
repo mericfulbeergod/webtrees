@@ -70,9 +70,7 @@
         "maximebf/debugbar": "*",
         "mockery/mockery": "*",
         "php-coveralls/php-coveralls": "*",
-        "phpunit/phpunit": "*",
-        "wapmorgan/php-code-fixer": "*",
-        "wata727/pahout": "*"
+        "phpunit/phpunit": "*"
     },
     "suggest": {
         "ext-pdo_mysql": "Required to use MySQL for database storage",
