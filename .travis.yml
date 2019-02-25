@@ -29,10 +29,9 @@ before_script:
 script:
   - mkdir -p build/logs
   - vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml
-  - # nightly does not currently have ext-xdebug, which is needed for coverage testing
-  - # and "pecl install xdebug" does not currently run on PHP 8.0
-  - if [ $(phpenv version-name) =  nightly]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
-  - if [ $(phpenv version-name) != nightly]; then vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml; fi
+  - # nightly and 7.4snapshot do not currently have ext-xdebug, which is needed for coverage testing
+  - if [ $(phpenv version-name)  = 7.4snapshot -o $(phpenv version-name)  = nightly]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
+  - if [ $(phpenv version-name) != 7.4snapshot -a $(phpenv version-name) != nightly]; then vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml; fi
 
 after_script:
   - travis_retry php vendor/bin/php-coveralls -v
